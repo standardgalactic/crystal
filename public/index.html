@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Crystal Language Basics</title>
+  <style>
+
+:root {
+  --bg: #f7f7f7;             /* Slightly off-white background */
+  --text: #222;              /* Keep the text readable */
+  --code-bg: #ebebeb;        /* Softer contrast for code blocks */
+  --code-text: #111;
+  --bubble-bg: #b0b4bc;      /* Clear contrast from page bg */
+}
+
+    [data-theme="dark"] {
+      --bg: #1e1e2f;
+      --text: #e0e0e0;
+      --code-bg: #2d2d3a;
+      --code-text: #f8f8f2;
+      --bubble-bg: #33364a;
+    }
+
+    body {
+      font-family: system-ui, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      margin: 2rem;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    h1, h2 {
+      color: var(--text);
+    }
+
+    code {
+      background: var(--code-bg);
+      color: var(--code-text);
+      padding: 2px 4px;
+      border-radius: 4px;
+      font-family: monospace;
+    }
+
+    pre {
+      background: var(--code-bg);
+      color: var(--code-text);
+      padding: 1rem;
+      border-radius: 6px;
+      overflow-x: auto;
+      margin-bottom: 1.5rem;
+    }
+
+    section {
+      background-color: var(--bubble-bg);
+      padding: 1rem;
+      border-radius: 10px;
+      margin-bottom: 2rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+    }
+
+    button.theme-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background: #888;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background 0.2s ease;
+    }
+
+    button.theme-toggle:hover {
+      background: #666;
+    }
+  </style>
+
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+  <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+
+  <h1>Crystal Language Basics</h1>
+
+  <section>
+    <h2>Variables & Types</h2>
+    <pre><code># Type is inferred
+name = "Crystal"
+version = 1.10
+
+# Explicit typing
+count : Int32 = 42
+</code></pre>
+  </section>
+
+  <section>
+    <h2>Control Flow</h2>
+    <pre><code>if count > 10
+  puts "High count"
+elsif count == 10
+  puts "Just right"
+else
+  puts "Low count"
+end
+</code></pre>
+  </section>
+
+  <section>
+    <h2>Methods</h2>
+    <pre><code>def greet(name : String) : String
+  "Hello, #{name}!"
+end
+
+puts greet("Crystal")
+</code></pre>
+  </section>
+
+  <section>
+    <h2>Classes & Structs</h2>
+    <pre><code>class Dog
+  property name
+
+  def initialize(@name : String)
+  end
+
+  def speak
+    "Woof! I’m #{@name}"
+  end
+end
+
+fido = Dog.new("Fido")
+puts fido.speak
+</code></pre>
+  </section>
+
+  <section>
+    <h2>Collections</h2>
+    <pre><code>arr = [1, 2, 3]
+arr.each do |num|
+  puts num * 2
+end
+
+hash = {"name" => "Crystal", "type" => "Language"}
+puts hash["name"]
+</code></pre>
+  </section>
+
+  <section>
+    <h2>Nil Safety</h2>
+    <pre><code>maybe_string : String? = nil
+
+if maybe_string
+  puts maybe_string.upcase
+else
+  puts "It's nil!"
+end
+</code></pre>
+  </section>
+
+  <section>
+    <h2>Concurrency</h2>
+    <pre><code>channel = Channel(Int32).new
+
+spawn do
+  sleep 1
+  channel.send 42
+end
+
+puts channel.receive # => 42
+</code></pre>
+  </section>
+
+  <p>Built with ❤️ using <strong>Crystal</strong>.</p>
+
+  <script>
+    // Default to dark mode on load
+    document.documentElement.setAttribute("data-theme", "dark");
+
+    function toggleTheme() {
+      const current = document.documentElement.getAttribute("data-theme");
+      if (current === "dark") {
+        document.documentElement.removeAttribute("data-theme");
+      } else {
+        document.documentElement.setAttribute("data-theme", "dark");
+      }
+    }
+  </script>
+</body>
+</html>

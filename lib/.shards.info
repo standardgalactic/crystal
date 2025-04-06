@@ -7,3 +7,9 @@ shards:
   reply:
     git: https://github.com/i3oris/reply.git
     version: 0.3.1+git.commit.13f7eba083f138dd063c68b859c8e315f44fb523
+  x11:
+    git: https://github.com/tamasszekeres/x11-cr.git
+    version: 1.0.0+git.commit.52768620d01f1f70ef830f28cf4c07a3860ebcf4
+  cairo:
+    git: https://github.com/tamasszekeres/cairo-cr.git
+    version: 1.0.3
